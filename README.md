@@ -1,28 +1,79 @@
-# React + TypeScript + Vite
+# usePhoneCode - Country Dialing Code Hook
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+`usePhoneCode` is a simple and lightweight React hook that provides you with the dialing code for a specified country. This hook makes it easy to retrieve and display country dialing codes in your React application. You can also switch between different countries effortlessly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+To use `usePhoneCode` in your React project, follow these steps:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Install the package using npm or yarn:
 
-- Configure the top-level `parserOptions` property like this:
+   ```sh
+   npm install use-phone-code
+   # or
+   yarn add use-phone-code
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+2. Install the package using npm or yarn:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# use-phone-code
+   ```sh
+   import usePhoneCode from 'use-phone-code';
+
+## Usage
+
+### Initialization
+
+To get started with usePhoneCode, you need to initialize it with an initial country code.
+
+   ```sh
+   const { dialingCode, setCountry } = usePhoneCode('CA');
+   ```
+
+dialingCode: The dialing code for the specified country (e.g., +1 for Canada).
+setCountry: A function to change the currently selected country.
+
+## Example
+
+Here's a basic example of how to use usePhoneCode in your React component:
+
+   ```sh
+   import React from 'react';
+   import usePhoneCode from 'use-phone-code';
+
+   function App() {
+   const { dialingCode, setCountry } = usePhoneCode('CA');
+
+   return (
+      <div>
+         <h1>Country Code: <b>{dialingCode}</b></h1>
+         <button onClick={() => setCountry('PK')}>Switch to PK</button>
+      </div>
+   );
+   }
+
+   export default App;
+   ```
+
+In this example, we've initialized the hook with the country code 'CA' (Canada) and displayed the dialing code. When the button is clicked, the country is changed to 'PK' (Pakistan), and the dialing code will update accordingly.
+
+# API Reference
+### usePhoneCode(initialCountryCode: string): { dialingCode: string, setCountry: (countryCode: string) => void }
+
+Parameters
+
+    initialCountryCode (string): The initial country code to set.
+
+Returns
+
+    dialingCode (string): The dialing code for the currently selected country.
+    setCountry (function): A function to change the currently selected country. Pass the new country code as an argument to this function.
+
+
+# Conclusion
+
+usePhoneCode is a simple yet powerful React hook that allows you to easily fetch and display country dialing codes in your application. It simplifies the process of managing and switching between different countries, making it a valuable addition to your React project.
+
+If you have any questions, encounter issues, or want to contribute to the project, please check the GitHub repository for more information.
+
+Enjoy using usePhoneCode in your React application!
